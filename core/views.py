@@ -116,7 +116,7 @@ def main(request: WSGIRequest, page="/"):
     components = []
     data = ""
     for short in main_page.short_codes.split(","):
-        if request.session['lang'] == 'en':
+        if request.session.get('lang', 'ar') == 'en':
             try:
                 data = get_header_en(short, page)
             except:
