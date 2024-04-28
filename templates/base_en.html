@@ -37,23 +37,24 @@
 .header{
 	background-color: var(--red);
 	height: 160px;
-	border-radius: 0 0 0 200px;
+	border-radius: 0 0 200px 0;
 	display: grid;
 	grid-template-columns: 1fr 5fr;
     overflow: hidden;
     position: relative;
 }
 .logo{
-	background-image: url({% static '' %}/assets/logo_bg.png);
-	width: 400px;
+	background-image: url({% static '' %}/assets/logo_bg_en.png);
+	width: 413px;
 	height: 160px;
 	align-items: center;
 	align-content: center;
 	z-index: 2;
 }
 .logo img{
-    width:250px;
+    width:230px;
     z-index: 2;
+    transform: translateX(10px);
 }
 
 .header-menu{
@@ -89,6 +90,7 @@
 	border-radius: 200px;
 	position: absolute;
 	top: 50%;
+    left: 0;
 	z-index: 1;
 }
 
@@ -107,7 +109,6 @@
 
 .action-button{
         transition: 1s;
-
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
@@ -118,7 +119,7 @@
 	justify-content: center;
 	position: absolute;
 	bottom: 0;
-	left: 80px;
+	right: 80px;
 	transform: translateY(40px);
 	z-index: 99;
 }
@@ -147,6 +148,7 @@
 .action-button a{
 	text-decoration: none;
     	color: var(--red);
+    text-align: center;
 }
 .item-active{
 	background-color: white;
@@ -212,7 +214,7 @@
 	justify-content: center;
 	position: absolute;
 	bottom: 0;
-	right: 80px;
+	left: 80px;
 	transform: translateY(40px);
 	z-index: 99;
 }
@@ -447,6 +449,7 @@
 
 .header-btn2{
 		display: none;
+        right: 80px;
 	}
 
 .section6 {
@@ -488,6 +491,9 @@
 .section7 h5 *{
 	margin: 5px;
 }
+	.ficon{
+		top: 60%;
+	}
 @media screen and (max-width: 800px) {
      	.section4last{
   		transform: none;
@@ -624,27 +630,22 @@
 	}
 	.header-btn2{
 		display: flex;
+        position: absolute;
+        left: 280px;
+
 	}
 	.sidenav {padding-top: 15px;}
   	.sidenav a {font-size: 18px;}
 
 }
 
-
-
-
-
-/*
-.header-btn2{
-	display: none;
-}*/
 .sidenav {
   height: 100%;
   width: 0;
   position: fixed;
   z-index: 990;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: var(--gray);
   overflow-x: hidden;
   transition: 0.5s;
@@ -749,11 +750,8 @@
 	background-color: var(--red);
 	color: white;
 }
-	.ficon{
-		top: 60%;
-	}
 </style>
-<body dir="rtl">
+<body dir="ltr">
 
     {{ components|safe }}
 

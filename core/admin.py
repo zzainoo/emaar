@@ -2,13 +2,7 @@ from django.contrib import admin
 from .models import *
 from comps.models import ShortCode
 
-
-# class ShortCodeInline(admin.TabularInline):
-#     model = ShortCode
-#
-#
-# class CustomPageAdmin(admin.ModelAdmin):
-#     inlines = [ShortCodeInline]
+admin.site.site_header = "لوحة التحكم"
 
 
 admin.site.register(Site)
