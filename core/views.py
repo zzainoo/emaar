@@ -250,7 +250,7 @@ def get_header(short_code, page):
     menu = Menu.objects.get(id=header.menu_id)
     for item in MenuItem.objects.all().filter(menu=menu):
         data += f'''
-              <a href='{item.link}'>{item.name}</a>
+              <a href='{item.link.link}'>{item.name}</a>
         '''
 
     data += f'''
