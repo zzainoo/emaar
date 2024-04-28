@@ -7,8 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('<str:page>', main),
     path('', main),
-    path('projects/<int:pk>', list_projects),
-    path('posts/<int:pk>', list_posts),
+    path('projects/<int:pk>', list_projects,name='projects'),
+    path('posts/<int:pk>', list_posts,name='blog'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

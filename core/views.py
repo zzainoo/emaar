@@ -7,7 +7,7 @@ from comps.models import *
 
 def list_projects(request,pk):
     try:
-        post = Post.objects.get(pk=pk)
+        post = Project.objects.get(pk=pk)
         header = Header.objects.all().filter(is_default=True).first()
         footer = Footer.objects.all().filter(is_default=True).first()
         data = ""
@@ -48,7 +48,7 @@ def list_projects(request,pk):
 
 def list_posts(request,pk):
     try:
-        post = Project.objects.get(pk=pk)
+        post = Post.objects.get(pk=pk)
         header = Header.objects.all().filter(is_default=True).first()
         footer = Footer.objects.all().filter(is_default=True).first()
         data = ""
@@ -256,7 +256,7 @@ def get_header(short_code, page):
     data += f'''
     </div>
     <div class="header-wrapper" >
-	<div class="header" data-aos="{header.effect}" data-aos-duration="{header.effect_duration}">
+	<div class="header" >
 
 		<div class="logo">
 			<img src="{header.logo.url}" style="margin:10px;">
@@ -275,13 +275,18 @@ def get_header(short_code, page):
     '''
 
     for item in MenuItem.objects.all().filter(menu=menu):
+        if(item.link.link == '/'):
+            link = "/"
+        else:
+            link = f"/{item.link.link}"
         if page == item.link.link:
             data += f'''
                               <li class="lmenu-item item-active"><a href="{item.link.link}">{item.name}</a></li>
                         '''
         else:
+
             data += f'''
-                  <li class="lmenu-item"><a href="{item.link.link}">{item.name}</a></li>
+                  <li class="lmenu-item"><a href="{link}">{item.name}</a></li>
             '''
 
     data += '''
@@ -351,7 +356,7 @@ def get_masonry(short_code):
 		<div class="card-wrapper">
 			<div class="section-title animate__animated animate__pulse animate__infinite">{masonry.title}</div>
 			<div class="card">
-				<div class="card-image" style="background: url({masonry.image1.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
+				<div class="card-image" style="background: url({masonry.image1.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
 				<div class="card-icon ficon">{masonry.icon1}</div>
 				<div class="card-text">
 					<br>
@@ -367,7 +372,7 @@ def get_masonry(short_code):
 
 				<div class="card-wrapper" >
 			<div class="card"> 
-				<div class="card-image" style="background-image: url({masonry.image2.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
+				<div class="card-image" style="background-image: url({masonry.image2.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
 				<div class="card-text">
 					<br>
@@ -385,7 +390,7 @@ def get_masonry(short_code):
 
 		<div class="card-wrapper" style="transform: translateY(-100px);">
 			<div class="card">
-				<div class="card-image" style="background-image: url({masonry.image3.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;" ></div>
+				<div class="card-image" style="background-image: url({masonry.image3.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;" ></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
 				<div class="card-text">
 					<br>
@@ -413,9 +418,11 @@ def get_blog(short_code):
                 {blog.title}
             </div>
             
-            <div data-aos-duration="1000" class="posts">
+            <div class="posts">
         '''
         for post in Post.objects.all().filter(category=blog.category)[0:4]:
+            link = f"/posts/{post.pk}"
+
             data += f'''
                             <div class="post-wrapper">
                         <div class="post">
@@ -426,7 +433,7 @@ def get_blog(short_code):
                                 <br>
                             </div>
                         </div>
-                        <div class="post-btn"><a href="#">المزيد</a></div>
+                        <div class="post-btn"><a href="{link}">المزيد</a></div>
                 </div>
             '''
 
@@ -449,9 +456,12 @@ def get_blog(short_code):
         '''
     else:
         data = f'''
+        
             <div class="section6" data-aos="{blog.effect}" data-aos-duration="{blog.effect_duration}">
             '''
         for post in Post.objects.all().filter(category=blog.category)[0:blog.count]:
+            link = f"/posts/{post.pk}"
+
             data += f'''
                                 <div class="post-wrapper">
                             <div class="post">
@@ -462,7 +472,7 @@ def get_blog(short_code):
                                     <br>
                                 </div>
                             </div>
-                            <div class="post-btn"><a href="#">المزيد</a></div>
+                            <div class="post-btn"><a href="{link}">المزيد</a></div>
                     </div>
                 '''
         data += f'''
@@ -474,6 +484,7 @@ def get_blog(short_code):
 
 def get_project(short_code):
     blog = ProjectComp.objects.get(short_code=short_code)
+
     if blog.is_simple:
         data = f'''
         <div class="section-wrapper" >
@@ -485,6 +496,7 @@ def get_project(short_code):
             <div data-aos-duration="1000" class="posts">
         '''
         for post in Project.objects.all().filter(category=blog.category)[0:4]:
+            link = f"/projects/{post.pk}"
             data += f'''
                             <div class="post-wrapper">
                         <div class="post">
@@ -495,7 +507,7 @@ def get_project(short_code):
                                 <br>
                             </div>
                         </div>
-                        <div class="post-btn"><a href="#">المزيد</a></div>
+                        <div class="post-btn"><a href="{link}">المزيد</a></div>
                 </div>
             '''
 
@@ -521,6 +533,7 @@ def get_project(short_code):
             <div class="section6" data-aos="{blog.effect}" data-aos-duration="{blog.effect_duration}">
             '''
         for post in Project.objects.all().filter(category=blog.category)[0:blog.count]:
+            link = f"/projects/{post.pk}"
             data += f'''
                                 <div class="post-wrapper">
                             <div class="post">
@@ -531,7 +544,7 @@ def get_project(short_code):
                                     <br>
                                 </div>
                             </div>
-                            <div class="post-btn"><a href="#">المزيد</a></div>
+                            <div class="post-btn"><a href="{link}">المزيد</a></div>
                     </div>
                 '''
         data += f'''
@@ -561,7 +574,7 @@ def get_footer(short_code):
 
     for item in MenuItem.objects.all().filter(menu=footer.menu1):
         data += f'''
-        <li class="footer-item"><a href="{item.link}">{item.name}</a></li>
+        <li class="footer-item"><a href="{item.link.link}">{item.name}</a></li>
         '''
 
     data += f'''
@@ -578,14 +591,14 @@ def get_footer(short_code):
          <li class="footer-item"><a href="{item.link}">{item.name}</a></li>
          '''
 
-        data += f'''
-        	</ul>
-    	</div>
+    data += f'''
+           	</ul>
+       	</div>
 
-    		<div>
-    		<p class="footer-menu-title">{footer.title3}</p>
-    				<br><ul class="footer-menu">
-        '''
+       		<div>
+       		<p class="footer-menu-title">{footer.title3}</p>
+       				<br><ul class="footer-menu">
+           '''
 
     for item in MenuItem.objects.all().filter(menu=footer.menu3):
         data += f'''
