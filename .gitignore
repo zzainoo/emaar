@@ -101,3 +101,4 @@ local_settings.py
 .kolo
 .env
 venv
+db.sqlite3

@@ -74,7 +74,10 @@
 .umenu-item{
 	font-size: 16px;
 	padding: 10px 20px;
-
+}
+.umenu-item:hover{
+    color: var(--gray);
+    cursor: pointer;
 }
 .umenu-item > *{
 	padding: 0 10px;
@@ -103,6 +106,8 @@
 }
 
 .action-button{
+        transition: 1s;
+
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
@@ -116,6 +121,14 @@
 	left: 80px;
 	transform: translateY(40px);
 	z-index: 99;
+}
+.action-button:hover{
+    transition: 1s;
+    bottom: 10px;
+}
+.action-button2:hover{
+    transition: 1s;
+    bottom: 10px;
 }
 .action-button div{
 	height: 80px;
@@ -188,6 +201,7 @@
 	position: relative;
 }
 .action-button2{
+        transition: 1s;
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
@@ -300,6 +314,7 @@
 	color: black;
 }
 .post-btn{
+    transition: 1s;
 	width: 60%;
 	border-radius: 20px;
 	background-color: white;
@@ -310,6 +325,11 @@
 	text-align: center;
 	padding: 10px;
 	transform: translateY(-100%);
+}
+.post-btn:hover {
+    transition: 1s;
+	background-color: var(--red);
+    color: white;
 }
 .post-btn a{
     text-decoration: none;
@@ -325,6 +345,9 @@
 	background-image: url({% static '' %}assets/pattern_bg.png);
 }
 
+.section4last{
+    transform: translateY(-100px);
+}
 
 .card-wrapper{
 /*	width: 350px;*/
@@ -452,7 +475,7 @@
 }
 .section7 input,textarea {
 	padding: 15px;
-	background-color: var(--gray);
+	background-color: #eaeaea;
 	border: none;
 	border-radius: 12px;
 	width: 100%;
@@ -466,6 +489,10 @@
 	margin: 5px;
 }
 @media screen and (max-width: 800px) {
+     	.section4last{
+  		transform: none;
+  	}
+
     .section7{
 		margin-top: 20px;
 	padding:0;
@@ -651,11 +678,24 @@
 	color: var(--red);
 }
 .lmenu-item-list a{
-	text-decoration: none;
+	transition: 1s;
+    text-decoration: none;
 	color: white;
+}
+.lmenu-item-list a:hover{
+    transition: 1s;
+    background-color: white;
+	padding: 10px 20px;
+	border-radius: 12px;
+	color: var(--red);
 }
 .item-active a{
 	color: var(--red);
+}
+
+
+.section > div > p:nth-child(1){
+    font-size: 50px;
 }
 .section-rounded{
 	margin-top: 15px;
@@ -698,6 +738,16 @@
 .section8 > div{
 	align-content: center;
 	align-items: center;
+}
+.post-btn{
+	text-decoration: none;
+		transition: 1s;
+
+}
+.post-btn:hover{
+	transition: 1s;
+	background-color: var(--red);
+	color: white;
 }
 </style>
 <body dir="rtl">

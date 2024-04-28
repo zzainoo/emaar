@@ -388,7 +388,7 @@ def get_masonry(short_code):
 
 
 
-		<div class="card-wrapper" style="transform: translateY(-100px);">
+		<div class="card-wrapper section4last">
 			<div class="card">
 				<div class="card-image" style="background-image: url({masonry.image3.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;" ></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
@@ -433,7 +433,7 @@ def get_blog(short_code):
                                 <br>
                             </div>
                         </div>
-                        <div class="post-btn"><a href="{link}">المزيد</a></div>
+                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
                 </div>
             '''
 
@@ -472,7 +472,7 @@ def get_blog(short_code):
                                     <br>
                                 </div>
                             </div>
-                            <div class="post-btn"><a href="{link}">المزيد</a></div>
+                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
                     </div>
                 '''
         data += f'''
@@ -507,7 +507,7 @@ def get_project(short_code):
                                 <br>
                             </div>
                         </div>
-                        <div class="post-btn"><a href="{link}">المزيد</a></div>
+                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
                 </div>
             '''
 
@@ -544,7 +544,7 @@ def get_project(short_code):
                                     <br>
                                 </div>
                             </div>
-                            <div class="post-btn"><a href="{link}">المزيد</a></div>
+                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
                     </div>
                 '''
         data += f'''
@@ -588,7 +588,7 @@ def get_footer(short_code):
 
     for item in MenuItem.objects.all().filter(menu=footer.menu2):
         data += f'''
-         <li class="footer-item"><a href="{item.link}">{item.name}</a></li>
+         <li class="footer-item"><a href="{item.link.link}">{item.name}</a></li>
          '''
 
     data += f'''
@@ -602,7 +602,7 @@ def get_footer(short_code):
 
     for item in MenuItem.objects.all().filter(menu=footer.menu3):
         data += f'''
-         <li class="footer-item"><a href="{item.link}">{item.name}</a></li>
+         <li class="footer-item"><a href="{item.link.link}">{item.name}</a></li>
          '''
     data += '''
     </ul>
