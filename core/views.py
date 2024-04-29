@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .templates_ar import *
 from .templates_en import *
 
+
 def list_projects(request, pk):
     try:
         post = Project.objects.get(pk=pk)

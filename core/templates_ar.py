@@ -31,11 +31,11 @@ def get_section(short_code):
         	</div>
 
 
- <div class="action-button animate__animated animate__headShake " data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">
-        		<a href="{section.button_link}"><div>
+         <a href="{section.button_link}"><div class="action-button animate__animated animate__headShake " data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">
+        		<div>
         			{section.button_text}
-        		</div></a>
-        	</div>
+        		</div>
+        	</div></a>
 
         </div>
 
@@ -58,12 +58,12 @@ def get_section(short_code):
         </div>
 
 
-        <div class="action-button2 animate__animated animate__headShake ">
-            <a href="{section.button_link}"><div>
+        <a href="{section.button_link}"><div class="action-button2 animate__animated animate__headShake ">
+            <div>
                 {section.button_text}
             </div>
-            </a>
-        </div>
+            
+        </div></a>
     </div>
 
         '''
@@ -280,11 +280,11 @@ def get_blog(short_code):
         </div>
 
 
-        <div class="action-button center-button animate__animated animate__headShake ">
-            <a href="{blog.button_link}"><div>
+        <a href="{blog.button_link}"><div class="action-button center-button animate__animated animate__headShake ">
+            <div>
                 {blog.button_text}
-            </div></a>
-        </div>
+            </div>
+        </div></a>
 
         </div>
 
@@ -354,11 +354,11 @@ def get_project(short_code):
         </div>
 
 
-        <div class="action-button center-button animate__animated animate__headShake ">
-            <a href="{blog.button_link}"><div>
+        <a href="{blog.button_link}"><div class="action-button2 center-button animate__animated animate__headShake ">
+            <div>
                 {blog.button_text}
-            </div></a>
-        </div>
+            </div>
+        </div></a>
 
         </div>
 

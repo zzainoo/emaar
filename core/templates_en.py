@@ -31,11 +31,11 @@ def get_section_en(short_code):
         	</div>
 
 
- <div class="action-button animate__animated animate__headShake ">
-        		<a href="{section.button_link}"><div>
+       <a href="{section.button_link}"><div class="action-button animate__animated animate__headShake ">
+        		<div>
         			{section.button_text_e}
-        		</div></a>
-        	</div>
+        		</div>
+        	</div></a>
 
         </div>
 
@@ -58,12 +58,12 @@ def get_section_en(short_code):
         </div>
 
 
-        <div class="action-button2 animate__animated animate__headShake ">
-            <a href="{section.button_link}"><div>
+         <a href="{section.button_link}"><div class="action-button2 animate__animated animate__headShake ">
+           <div>
                 {section.button_text_e}
             </div>
-            </a>
-        </div>
+            
+        </div></a>
     </div>
 
         '''
@@ -270,7 +270,7 @@ def get_blog_en(short_code):
                                 <br>
                             </div>
                         </div>
-                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
+                           <a href="{link}" class="post-btn"> <div>more</div></a>
                 </div>
             '''
 
@@ -278,11 +278,11 @@ def get_blog_en(short_code):
         </div>
 
 
-        <div class="action-button center-button animate__animated animate__headShake ">
-            <a href="{blog.button_link}"><div>
+       <a href="{blog.button_link}"> <div class="action-button center-button animate__animated animate__headShake ">
+            <div>
                 {blog.button_text_e}
-            </div></a>
-        </div>
+            </div>
+        </div></a>
 
         </div>
 
@@ -309,7 +309,7 @@ def get_blog_en(short_code):
                                     <br>
                                 </div>
                             </div>
-                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
+                           <a href="{link}" class="post-btn"> <div>more</div></a>
                     </div>
                 '''
         data += f'''
@@ -344,7 +344,7 @@ def get_project_en(short_code):
                                 <br>
                             </div>
                         </div>
-                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
+                           <a href="{link}" class="post-btn"> <div>more</div></a>
                 </div>
             '''
 
@@ -352,11 +352,11 @@ def get_project_en(short_code):
         </div>
 
 
-        <div class="action-button center-button animate__animated animate__headShake ">
-            <a href="{blog.button_link}"><div>
+        <a href="{blog.button_link}"> <div class="action-button2 center-button animate__animated animate__headShake ">
+           <div>
                 {blog.button_text_e}
-            </div></a>
-        </div>
+            </div>
+        </div></a>
 
         </div>
 
@@ -381,7 +381,7 @@ def get_project_en(short_code):
                                     <br>
                                 </div>
                             </div>
-                           <a href="{link}" class="post-btn"> <div>المزيد</div></a>
+                           <a href="{link}" class="post-btn"> <div>more</div></a>
                     </div>
                 '''
         data += f'''
