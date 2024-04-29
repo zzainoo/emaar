@@ -18,6 +18,7 @@ ANIMATIONS = (
 
 class ShortCode(models.Model):
     short_code = models.CharField(_('الكود المختصر'), max_length=20, unique=True)
+    hash = models.CharField(_('id'),max_length=200,null=True,blank=True)
 
     class Meta:
         verbose_name = _('كود مختصر')
@@ -79,13 +80,14 @@ class Footer(ShortCode):
     logo_e = models.ImageField(_('اللوكو $'), upload_to=content_file_name)
     title1 = models.CharField(_('العنوان ١'), max_length=200)
     title_e1 = models.CharField(_('العنوان ١ $'), max_length=200)
+
     menu1 = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='menu1', verbose_name=_('القائمة ١'), )
     title2 = models.CharField(_('العنوان ٢'), max_length=200)
     title_e2 = models.CharField(_('العنوان ٢ $'), max_length=200)
-    menu2 = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='menu2', verbose_name=_('القائمة ٢'), )
-    title3 = models.CharField(_('العنوان ٣'), max_length=200)
-    title_e3 = models.CharField(_('العنوان ٣ $'), max_length=200)
-    menu3 = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='menu3', verbose_name=_('القائمة ٣'), )
+    email = models.CharField(_('البريد الالكتروني'), max_length=200)
+    phone = models.CharField(_('الهاتف'), max_length=200)
+    work_time = models.CharField(_('ساعات الهمل'), max_length=200)
+
     desc = models.TextField(_('الوصف'), )
     desc_e = models.TextField(_('الوصف $'), )
     effect = models.CharField(_('التآثير'), max_length=200, choices=ANIMATIONS, default="fade-up")
@@ -160,22 +162,22 @@ class Masonry(ShortCode):
     title1 = models.CharField(_('العنوان ١'), max_length=200)
     title1_e = models.CharField(_('العنوان ١ $'), max_length=200)
     image1 = models.ImageField(_('الصورة ١'), upload_to=content_file_name)
-    description1 = models.TextField(_('الوصف ١'), )
-    description1_e = models.TextField(_('الوصف ١ $'), )
+    description1 = models.TextField(_('الوصف ١'), max_length=220)
+    description1_e = models.TextField(_('الوصف ١ $'), max_length=220)
     icon1 = models.CharField(_('الايقونة ١'), max_length=200)
 
     title2 = models.CharField(_('العنوان ٢'), max_length=200)
     title2_e = models.CharField(_('العنوان ٢ $'), max_length=200)
     image2 = models.ImageField(_('الصورة ٢'), upload_to=content_file_name)
-    description2 = models.TextField(_('الوصف ٢'), )
-    description2_e = models.TextField(_('الوصف ٢ $'), )
+    description2 = models.TextField(_('الوصف ٢'), max_length=220 )
+    description2_e = models.TextField(_('الوصف ٢ $'),  max_length=220)
     icon2 = models.CharField(_('الايقونة ٢'), max_length=200)
 
     title3 = models.CharField(_('العنوان ٣'), max_length=200)
     title3_e = models.CharField(_('العنوان ٣ $'), max_length=200)
     image3 = models.ImageField(_('الصورة ٣'), upload_to=content_file_name)
-    description3 = models.TextField(_('الوصف ٣'), )
-    description3_e = models.TextField(_('الوصف ٣ $'), )
+    description3 = models.TextField(_('الوصف ٣'), max_length=220 )
+    description3_e = models.TextField(_('الوصف ٣ $'), max_length=220 )
     icon3 = models.CharField(_('الايقونة ٣'), max_length=200)
 
     effect = models.CharField(_('التآثير'), max_length=200, choices=ANIMATIONS, default="fade-up")

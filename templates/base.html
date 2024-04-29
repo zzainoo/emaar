@@ -420,11 +420,12 @@
 }
 .footer-item{
 	margin: 10px;
+    text-align: right;
 
 }
 .footer{
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 .footer a{
     text-decoration: none;
@@ -492,6 +493,8 @@
      	.section4last{
   		transform: none;
   	}
+
+
 
     .section7{
 		margin-top: 20px;
@@ -630,6 +633,14 @@
 
 }
 
+@media only screen and (min-width: 800px) and (max-width: 1024px){
+	.posts{
+		display: grid;
+		grid-template-columns: 1fr 1fr ;
+	}
+
+
+}
 
 
 
@@ -660,6 +671,12 @@
   display: block;
   transition: 0.3s;
 
+}
+.sidenav .active{
+    background-color: var(--red);
+    color: white;
+    margin: 0 20px;
+    border-radius: 12px;
 }
 
 .sidenav a:hover{
@@ -752,6 +769,18 @@
 	.ficon{
 		top: 60%;
 	}
+.c1{
+    transition: 1s;
+}
+.c1:hover {
+        font-size: 23px;
+    background-color: var(--gray);
+    transition: 1s;
+
+    }
+
+
+}
 </style>
 <body dir="rtl">
 

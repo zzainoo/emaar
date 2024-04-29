@@ -1,5 +1,7 @@
 from .models import *
 from comps.models import *
+
+
 def get_section(short_code):
     section = Section.objects.get(short_code=short_code)
     is_background = ""
@@ -14,22 +16,22 @@ def get_section(short_code):
 
 
 
-        	<div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">
+        	<div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}" >
 
-        		<div data-aos-duration="1000">
-        			<div class="shape animate__animated animate__pulse animate__infinite">
-        				<img src="{section.image.url}" class="section-image" >
+        		<div >
+        			<div class="shape animate__animated animate__bounceInRight">
+        				<img src="{section.image.url}" class="section-image" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}">
         			</div>
         		</div>
         		<div>
-        			<p class="title">{section.title}</p>
+        			<p class="title" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">{section.title}</p>
         			<br>
-        			<p class="desc">{section.desc}</p>
+        			<p class="desc" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">{section.desc}</p>
         		</div>
         	</div>
 
 
- <div class="action-button animate__animated animate__headShake ">
+ <div class="action-button animate__animated animate__headShake " data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">
         		<a href="{section.button_link}"><div>
         			{section.button_text}
         		</div></a>
@@ -44,13 +46,13 @@ def get_section(short_code):
         <div class="section-wrapper" >
         <div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">
             <div>
-                <p class="title">{section.title}</p>
+                <p class="title" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">{section.title}</p>
                 <br>
-                <p class="desc">{section.desc}</p>
+                <p class="desc" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">{section.desc}</p>
             </div>
-            <div data-aos-duration="1000">
-                <div class="shape animate__animated animate__pulse animate__infinite">
-                    <img src="{section.image.url}" class="section-image" >
+            <div >
+                <div class="shape animate__animated animate__bounceInLeft animate__slow" >
+                    <img src="{section.image.url}" class="section-image"data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}" >
                 </div>
             </div>
         </div>
@@ -78,13 +80,19 @@ def get_header(short_code, page):
   '''
     menu = Menu.objects.get(id=header.menu_id)
     for item in MenuItem.objects.all().filter(menu=menu):
-        data += f'''
-              <a href='{item.link.link}'>{item.name}</a>
-        '''
+        if page == item.link.link:
+            data += f'''
+                       <a href='{item.link.link}' class="active">{item.name}</a>
+                        '''
+        else:
+
+            data += f'''
+                  <a href='{item.link.link}'>{item.name}</a>
+            '''
 
     data += f'''
     </div>
-    <div class="header-wrapper" >
+    <div class="header-wrapper">
 	<div class="header" >
 
 		<div class="logo">
@@ -153,8 +161,10 @@ def get_header(short_code, page):
 
 def get_spacer(short_code):
     spacer = Spacer.objects.get(short_code=short_code)
+    space = Spacer.objects.get(height=spacer)
+
     data = f'''
-    <div  style="height: {spacer.height}px;background-color: var(--red);background-image: url(./static/assets/pattern_bg.png);" data-aos="{Spacer.effect}" data-aos-duration="{Spacer.effect_duration}"></div>
+    <div  style="height: {space.height}px;background-color: var(--red);background-image: url(./static/assets/pattern_bg.png);" data-aos="{space.effect}" data-aos-duration="{space.effect_duration}"></div>
 
     '''
 
@@ -164,12 +174,12 @@ def get_spacer(short_code):
 def get_counter(short_code):
     counter = Counter.objects.get(short_code=short_code)
     data = f'''
-     <div class="section2-wrapper" data-aos="{counter.effect}" data-aos-duration="{counter.effect_duration}">
+     <div class="section2-wrapper">
 	<div class="section2">
-		<div class="animate__animated animate__bounceInUp animate__faster"><p>{counter.title1}</p><p>{counter.number1}</p></div>
-		<div class="animate__animated animate__bounceInUp animate__fast"><p>{counter.title2}</p><p>{counter.number2}</p></div>
-		<div class="animate__animated animate__bounceInUp "><p>{counter.title3}</p><p>{counter.number3}</p></div>
-		<div class="animate__animated animate__bounceInUp animate__slow	"><p>{counter.title4}</p><p>{counter.number4}</p></div>
+		<div class="c1" data-aos="fade-up" data-aos-duration="{counter.effect_duration}"><p>{counter.title1}</p><p>{counter.number1}</p></div>
+		<div class="c1" data-aos="fade-right" data-aos-duration="{counter.effect_duration}"><p>{counter.title2}</p><p>{counter.number2}</p></div>
+		<div class="c1" data-aos="fade-left" data-aos-duration="{counter.effect_duration}"><p>{counter.title3}</p><p>{counter.number3}</p></div>
+		<div class="c1" data-aos="fade-up" data-aos-duration="{counter.effect_duration}"><p>{counter.title4}</p><p>{counter.number4}</p></div>
 	</div>
 </div>
     '''
@@ -396,9 +406,9 @@ def get_footer(short_code):
 		</p>
 	</div>
 	<div>
-
+<br>
 		<p class="footer-menu-title">{footer.title1}</p>
-		<br>
+		
 		<ul class="footer-menu">
     '''
 
@@ -412,33 +422,22 @@ def get_footer(short_code):
 	</div>
 
 		<div>
+		<br>
 		<p class="footer-menu-title">{footer.title2}</p>
-				<br><ul class="footer-menu">
-    '''
+				<ul class="footer-menu" style="list-style: none;">
 
-    for item in MenuItem.objects.all().filter(menu=footer.menu2):
-        data += f'''
-         <li class="footer-item"><a href="{item.link.link}">{item.name}</a></li>
-         '''
-
-    data += f'''
+            
+            <li class="footer-item"><i class="fa-solid fa-envelope"></i> {footer.email}</li>
+			<li class="footer-item"><i class="fa-solid fa-phone"></i> {footer.phone}</li>
+			<li class="footer-item"><i class="fa-solid fa-calendar-days"></i> {footer.work_time}</li>
            	</ul>
        	</div>
 
-       		<div>
-       		<p class="footer-menu-title">{footer.title3}</p>
-       				<br><ul class="footer-menu">
-           '''
-
-    for item in MenuItem.objects.all().filter(menu=footer.menu3):
-        data += f'''
-         <li class="footer-item"><a href="{item.link.link}">{item.name}</a></li>
-         '''
-    data += '''
-    </ul>
-	</div>
+       		
 
 </div>
+<div style="text-align:center;padding:5px;" data-aos="{footer.effect}" data-aos-duration="{footer.effect_duration}"> © 1998-2024
+. All rights reserved , By Teatro Agency </div>
 '''
     return data
 

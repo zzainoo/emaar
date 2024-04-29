@@ -174,7 +174,7 @@ def main(request: WSGIRequest, page="/"):
 
             try:
                 data = get_spacer(short)
-            except:
+            except Exception as e:
                 pass
 
             try:

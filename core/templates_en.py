@@ -19,7 +19,7 @@ def get_section_en(short_code):
         	<div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">
 
         		<div data-aos-duration="1000">
-        			<div class="shape animate__animated animate__pulse animate__infinite">
+        			<div class="shape animate__animated animate__bounceInLeft">
         				<img src="{section.image_e.url}" class="section-image" >
         			</div>
         		</div>
@@ -51,7 +51,7 @@ def get_section_en(short_code):
                 <p class="desc">{section.desc_e}</p>
             </div>
             <div data-aos-duration="1000">
-                <div class="shape animate__animated animate__pulse animate__infinite">
+                <div class="shape animate__animated animate__bounceInRight">
                     <img src="{section.image_e.url}" class="section-image" >
                 </div>
             </div>
@@ -80,9 +80,15 @@ def get_header_en(short_code, page):
   '''
     menu = Menu.objects.get(id=header.menu_id)
     for item in MenuItem.objects.all().filter(menu=menu):
-        data += f'''
-              <a href='{item.link.link}'>{item.name}</a>
-        '''
+        if page == item.link.link:
+            data += f'''
+                       <a href='{item.link.link}' class="active">{item.name_e}</a>
+                        '''
+        else:
+
+            data += f'''
+                  <a href='{item.link.link}'>{item.name_e}</a>
+            '''
 
     data += f'''
     </div>
@@ -398,9 +404,9 @@ def get_footer_en(short_code):
 		</p>
 	</div>
 	<div>
-
+<br>
 		<p class="footer-menu-title">{footer.title_e1}</p>
-		<br>
+		
 		<ul class="footer-menu">
     '''
 
@@ -414,31 +420,22 @@ def get_footer_en(short_code):
 	</div>
 
 		<div>
+		<br>
 		<p class="footer-menu-title">{footer.title_e2}</p>
-				<br><ul class="footer-menu">
-    '''
+				<ul class="footer-menu">
 
-    for item in MenuItem.objects.all().filter(menu=footer.menu2):
-        data += f'''
-         <li class="footer-item"><a href="{item.link.link}">{item.name_e}</a></li>
-         '''
 
-    data += f'''
+  <li class="footer-item"><i class="fa-solid fa-envelope"></i> {footer.email}</li>
+			<li class="footer-item"><i class="fa-solid fa-phone"></i> {footer.phone}</li>
+			<li class="footer-item"><i class="fa-solid fa-calendar-days"></i> {footer.work_time}</li>
+
+
            	</ul>
        	</div>
 
-       		<div>
-       		<p class="footer-menu-title">{footer.title_e3}</p>
-       				<br><ul class="footer-menu">
-           '''
+    
 
-    for item in MenuItem.objects.all().filter(menu=footer.menu3):
-        data += f'''
-         <li class="footer-item"><a href="{item.link.link}">{item.name_e}</a></li>
-         '''
-    data += '''
-    </ul>
-	</div>
+   
 
 </div>
 '''
