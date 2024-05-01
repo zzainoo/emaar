@@ -459,7 +459,7 @@ def get_contact_en(short_code):
 <input type="text" placeholder="subject">
 						<textarea rows="10">message
 						</textarea>
-
+<button type="submit">send</button>
 
 				</form>
 		</div>

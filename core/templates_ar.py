@@ -19,7 +19,7 @@ def get_section(short_code):
         	<div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}" >
 
         		<div >
-        			<div class="shape animate__animated animate__bounceInRight">
+        			<div class="shape ">
         				<img src="{section.image.url}" class="section-image" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}">
         			</div>
         		</div>
@@ -51,7 +51,7 @@ def get_section(short_code):
                 <p class="desc" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">{section.desc}</p>
             </div>
             <div >
-                <div class="shape animate__animated animate__bounceInLeft animate__slow" >
+                <div class="shape " >
                     <img src="{section.image.url}" class="section-image"data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}" >
                 </div>
             </div>
@@ -460,7 +460,7 @@ def get_contact(short_code):
 						<textarea rows="10">الرسالة
 						</textarea>
 
-
+    <button type="submit">ارسال</button>
 				</form>
 		</div>
 

@@ -18,6 +18,7 @@ def list_projects(request, pk):
             <div >
                 <p class="title">{post.name}</p>
                 <br>
+                <p class="desc"> {post.desc}</p>
                 
             </div>
             <div >
@@ -31,9 +32,7 @@ def list_projects(request, pk):
     
     </div>
     
-    <div class="section">
-        {post.desc}
-    </div>
+    
         
         '''
         ctx = {
@@ -52,37 +51,62 @@ def list_posts(request, pk):
         header = Header.objects.all().filter(is_default=True).first()
         footer = Footer.objects.all().filter(is_default=True).first()
         data = ""
-        data += get_header(header.short_code, "/")
-        data += f'''
-        <div class="section-wrapper">
-        <div class="section8 section-rounded">
-            <div >
-                <p class="title">{post.name}</p>
-                <br>
-
-            </div>
-            <div >
-                <div class="shape animate__animated animate__pulse">
-                    <img src="{post.image.url}" class="section-image" >
+        if request.session.get('lang', 'ar')== 'ar':
+            data += get_header(header.short_code, "/")
+            data += f'''
+            <div class="section-wrapper">
+            <div class="section8 section-rounded">
+                <div >
+                    <p class="title">{post.name}</p>
+                    <br>
+                    <p class="title">{post.desc}</p>
+    
+                </div>
+                <div >
+                    <div class="shape animate__animated animate__pulse">
+                        <img src="{post.image.url}" class="section-image" >
+                    </div>
                 </div>
             </div>
         </div>
+        <br>
+            '''
+
+            data += get_footer(footer.short_code)
+            ctx = {
+                'site': Site.objects.get(id=post.site.id),
+                'components': data,
+            }
+            return render(request, 'base.html', ctx)
+        else:
+            data += get_header_en(header.short_code, "/")
+            data += f'''
+                   <div class="section-wrapper">
+                   <div class="section8 section-rounded">
+                       <div >
+                           <p class="title">{post.name_e}</p>
+                           <br>
+                           <p class="title">{post.desc_e}</p>
+
+                       </div>
+                       <div >
+                           <div class="shape animate__animated animate__pulse">
+                               <img src="{post.image.url}" class="section-image" >
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <br>
+                   '''
+
+            data += get_footer_en(footer.short_code)
+            ctx = {
+                'site': Site.objects.get(id=post.site.id),
+                'components': data,
+            }
+            return render(request, 'base_en.html', ctx)
 
 
-
-    </div>
-
-    <div class="section">
-        {post.desc}
-    </div>
-
-        '''
-        ctx = {
-            'site': Site.objects.get(id=post.site.id),
-            'components': data,
-        }
-        data += get_footer(footer.short_code)
-        return render(request, 'base.html', ctx)
     except:
         return HttpResponse("404 not found")
 
