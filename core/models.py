@@ -115,6 +115,7 @@ class MenuItem(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, verbose_name=_('القائمة'), )
     name = models.CharField(_('الاسم'), max_length=200)
     name_e = models.CharField(_('الاسم $'), max_length=200)
+    external = models.BooleanField(_('خارجي؟'),default=False)
     link = models.ForeignKey(LinkModel, on_delete=models.CASCADE, verbose_name=_('الرابط'), )
 
     class Meta:

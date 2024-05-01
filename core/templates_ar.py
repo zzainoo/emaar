@@ -19,11 +19,11 @@ def get_section(short_code):
         	<div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}" >
 
         		<div >
-        			<div class="shape ">
+        			<div class="shape">
         				<img src="{section.image.url}" class="section-image" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}">
         			</div>
         		</div>
-        		<div>
+        		<div class="section-text">
         			<p class="title" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">{section.title}</p>
         			<br>
         			<p class="desc" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">{section.desc}</p>
@@ -31,7 +31,7 @@ def get_section(short_code):
         	</div>
 
 
-         <a href="{section.button_link}"><div class="action-button animate__animated animate__headShake " data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">
+         <a href="{section.button_link}"><div class="action-button3 animate__animated animate__headShake " data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">
         		<div>
         			{section.button_text}
         		</div>
@@ -45,13 +45,13 @@ def get_section(short_code):
         data = f'''
         <div class="section-wrapper" >
         <div class="section {is_background}" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">
-            <div>
+            <div class="section-text">
                 <p class="title" data-aos="{section.effect}" data-aos-duration="{section.effect_duration}">{section.title}</p>
                 <br>
                 <p class="desc" data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 1000}">{section.desc}</p>
             </div>
             <div >
-                <div class="shape " >
+                <div class="shape" >
                     <img src="{section.image.url}" class="section-image"data-aos="{section.effect}" data-aos-duration="{section.effect_duration + 3000}" >
                 </div>
             </div>
@@ -80,14 +80,22 @@ def get_header(short_code, page):
   '''
     menu = Menu.objects.get(id=header.menu_id)
     for item in MenuItem.objects.all().filter(menu=menu):
+        if item.external is False:
+            if item.link.link == '/':
+                link = "/"
+            else:
+                link = f"/{item.link.link}"
+        else:
+            link = item.link
+
         if page == item.link.link:
             data += f'''
-                       <a href='{item.link.link}' class="active">{item.name}</a>
+                       <a href='{link}' class="active">{item.name}</a>
                         '''
         else:
 
             data += f'''
-                  <a href='{item.link.link}'>{item.name}</a>
+                  <a href='{link}'>{item.name}</a>
             '''
 
     data += f'''
@@ -112,10 +120,13 @@ def get_header(short_code, page):
     '''
 
     for item in MenuItem.objects.all().filter(menu=menu):
-        if (item.link.link == '/'):
-            link = "/"
+        if item.external is False:
+            if item.link.link == '/':
+                link = "/"
+            else:
+                link = f"/{item.link.link}"
         else:
-            link = f"/{item.link.link}"
+            link = item.link
         if page == item.link.link:
             data += f'''
                               <li class="lmenu-item item-active"><a href="{item.link.link}">{item.name}</a></li>
@@ -177,9 +188,9 @@ def get_counter(short_code):
      <div class="section2-wrapper">
 	<div class="section2">
 		<div class="c1" data-aos="fade-up" data-aos-duration="{counter.effect_duration}"><p>{counter.title1}</p><p>{counter.number1}</p></div>
-		<div class="c1" data-aos="fade-right" data-aos-duration="{counter.effect_duration}"><p>{counter.title2}</p><p>{counter.number2}</p></div>
-		<div class="c1" data-aos="fade-left" data-aos-duration="{counter.effect_duration}"><p>{counter.title3}</p><p>{counter.number3}</p></div>
-		<div class="c1" data-aos="fade-up" data-aos-duration="{counter.effect_duration}"><p>{counter.title4}</p><p>{counter.number4}</p></div>
+		<div class="c1" data-aos="fade-down" data-aos-duration="{counter.effect_duration}"><p>{counter.title2}</p><p>{counter.number2}</p></div>
+		<div class="c1" data-aos="fade-up" data-aos-duration="{counter.effect_duration}"><p>{counter.title3}</p><p>{counter.number3}</p></div>
+		<div class="c1" data-aos="fade-down" data-aos-duration="{counter.effect_duration}"><p>{counter.title4}</p><p>{counter.number4}</p></div>
 	</div>
 </div>
     '''
