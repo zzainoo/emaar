@@ -107,7 +107,7 @@ def list_posts(request, pk):
             data += f'''
                    <div class="section-wrapper">
                    <div class="section8 section-rounded">
-                       <div >
+                       <div>
                            <p class="title">{post.name_e}</p>
                            <br>
                            <p class="title">{post.desc_e}</p>

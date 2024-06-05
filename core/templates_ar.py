@@ -203,7 +203,7 @@ def get_masonry(short_code):
     <div class="section-wrapper">
 	<div class="section4" data-aos="{masonry.effect}" data-aos-duration="{masonry.effect_duration}"> 
 
-		<div class="card-wrapper">
+		<div class="card-wrapper" data-aos="flip-left" data-aos-duration="3000">
 			<div class="section-title animate__animated animate__pulse animate__infinite">{masonry.title}</div>
 			<div class="card">
 				<div class="card-image" style="background: url({masonry.image1.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
@@ -220,7 +220,7 @@ def get_masonry(short_code):
 
 
 
-				<div class="card-wrapper" >
+				<div class="card-wrapper" data-aos="flip-left" data-aos-duration="3000">
 			<div class="card"> 
 				<div class="card-image" style="background-image: url({masonry.image2.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
@@ -238,7 +238,7 @@ def get_masonry(short_code):
 
 
 
-		<div class="card-wrapper section4last">
+		<div class="card-wrapper section4last" data-aos="flip-left" data-aos-duration="3000">
 			<div class="card">
 				<div class="card-image" style="background-image: url({masonry.image3.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;" ></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
@@ -274,7 +274,7 @@ def get_blog(short_code):
             link = f"/posts/{post.pk}"
 
             data += f'''
-                            <div class="post-wrapper">
+                            <div class="post-wrapper" data-aos="flip-left" data-aos-duration="3000">
                         <div class="post">
                             <div class="post-image" style="background-image: url({post.image.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
                             <div class="post-text">
@@ -313,7 +313,7 @@ def get_blog(short_code):
             link = f"/posts/{post.pk}"
 
             data += f'''
-                                <div class="post-wrapper">
+                                <div class="post-wrapper" data-aos="flip-left" data-aos-duration="3000">
                             <div class="post">
                                 <div class="post-image" style="background-image: url({post.image.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
                                 <div class="post-text">
@@ -348,7 +348,7 @@ def get_project(short_code):
         for post in Project.objects.all().filter(category=blog.category)[0:4]:
             link = f"/projects/{post.pk}"
             data += f'''
-                            <div class="post-wrapper">
+                            <div class="post-wrapper" data-aos="flip-left" data-aos-duration="3000">
                         <div class="post">
                             <div class="post-image" style="background-image: url({post.image.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
                             <div class="post-text">
@@ -385,7 +385,7 @@ def get_project(short_code):
         for post in Project.objects.all().filter(category=blog.category)[0:blog.count]:
             link = f"/projects/{post.pk}"
             data += f'''
-                                <div class="post-wrapper">
+                                <div class="post-wrapper" data-aos="flip-left" data-aos-duration="3000">
                             <div class="post">
                                 <div class="post-image" style="background-image: url({post.image.url});background-size:contain;background-repeat:no-repeat;background-position: 50% 50%;"></div>
                                 <div class="post-text">
