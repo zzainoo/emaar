@@ -204,7 +204,16 @@ def get_masonry(short_code):
 	<div class="section4" data-aos="{masonry.effect}" data-aos-duration="{masonry.effect_duration}"> 
 
 		<div class="card-wrapper" data-aos="flip-left" data-aos-duration="3000">
-			<div class="section-title animate__animated animate__pulse animate__infinite">{masonry.title}</div>
+			<div class="section-title animate__animated animate__pulse animate__infinite">
+			
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="svgcolor">
+  <path  d="M45.9,-45.4C57.2,-34.6,62.4,-17.3,62.4,0C62.5,17.4,57.3,34.7,46,49C34.7,63.3,17.4,74.5,1.7,72.8C-14,71.2,-28,56.6,-41.7,42.3C-55.5,28,-68.9,14,-71.8,-3C-74.8,-19.9,-67.3,-39.9,-53.6,-50.7C-39.9,-61.5,-19.9,-63.1,-1.3,-61.8C17.3,-60.5,34.6,-56.2,45.9,-45.4Z" transform="translate(100 100)" />
+</svg>
+			
+			<span class="svgtitle">{masonry.title}</span>
+			
+			
+			</div>
 			<div class="card">
 				<div class="card-image" style="background: url({masonry.image1.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
 				<div class="card-icon ficon">{masonry.icon1}</div>
@@ -221,7 +230,7 @@ def get_masonry(short_code):
 
 
 				<div class="card-wrapper" data-aos="flip-left" data-aos-duration="3000">
-			<div class="card"> 
+			<div class="card" > 
 				<div class="card-image" style="background-image: url({masonry.image2.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;"></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
 				<div class="card-text">
@@ -239,7 +248,7 @@ def get_masonry(short_code):
 
 
 		<div class="card-wrapper section4last" data-aos="flip-left" data-aos-duration="3000">
-			<div class="card">
+			<div class="card" data-aos="flip-left" data-aos-duration="3000">
 				<div class="card-image" style="background-image: url({masonry.image3.url});background-size:cover;background-repeat:no-repeat;background-position: 50% 50%;" ></div>
 				<div class="card-icon"><i class="fa-solid fa-envelope" style="color:white;"></i></div>
 				<div class="card-text">
