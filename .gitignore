@@ -1,5 +1,5 @@
 venv
-media
+
 staticfiles
 *.pyc
 .DS_Store
@@ -101,4 +101,3 @@ local_settings.py
 .kolo
 .env
 venv
-db.sqlite3
