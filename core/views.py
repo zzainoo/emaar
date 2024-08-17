@@ -147,13 +147,14 @@ def main(request: WSGIRequest, page="/"):
     subdomains = []
     for sub in Site.objects.all():
         subdomains.append(sub.subdomain)
-
+    print(request.build_absolute_uri())
     subdomain = request.META['HTTP_HOST'].split('.')[0]
     if subdomain in subdomains:
         site = Site.objects.get(subdomain=subdomain)
     else:
         site = Site.objects.all().filter(is_homepage=True).first()
 
+    print(subdomain)
     main_page = CustomPage.objects.filter(site=site).filter(is_home=True).first()
     if page != "/" and page != "favicon.ico":
         try:
