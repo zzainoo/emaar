@@ -10,6 +10,7 @@ class Site(models.Model):
     p_color = models.CharField(_('اللون الاساسي'), max_length=200)
     s_color = models.CharField(_('اللون الثانوي'), max_length=200)
     subdomain = models.CharField(_('رابط'), max_length=200, unique=True)
+    head_data = models.TextField(_('محتويات الهيدر'),null=True, blank=True)
     is_homepage = models.BooleanField(_('رئيسي؟'), default=False)
 
     def __str__(self):
